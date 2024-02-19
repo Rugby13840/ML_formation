@@ -146,12 +146,12 @@ def neural_network(X, y, n1=32, learning_rate = 0.1, n_iter = 10000):
     print(train_acc.pop())
     return parametres
 
-X,y= make_circles(n_samples=100,noise=0.1,factor=0.3,random_state=0)#On génère les données 
+X,y= make_circles(n_samples=100,noise=0.1,factor=0.5,random_state=0)#On génère les données 
 y=y.reshape((1,y.shape[0])) #on tranforme y en un array de la bonne taille
 
 X=X.T#on transpose les données pour que ça soit cohérent avec le modèle
 
-new_point=np.array([0.3,1.3])
+new_point=np.array([0.52,0.52])
 
 plt.scatter(X[0,:],X[1,:], c=y, cmap="summer")
 plt.scatter(new_point[0],new_point[1],c='r')
