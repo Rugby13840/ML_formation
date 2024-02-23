@@ -4,10 +4,10 @@ from sklearn.datasets import make_blobs
 from sklearn.datasets import make_circles
 from sklearn.metrics import accuracy_score
 
-#X,y= make_blobs(n_samples=100,n_features=2,centers=2,random_state=0)#On génère les données 
-#y=y.reshape((len(y),1)) #on tranforme y en un array de la bonne taille
-X,y= make_circles(n_samples=100,noise=0.1,factor=0.3,random_state=0)#On génère les données 
-y=y.reshape((y.shape[0],1)) #on tranforme y en un array de la bonne taille
+X,y= make_blobs(n_samples=100,n_features=3,centers=2,random_state=0)#On génère les données 
+y=y.reshape((len(y),1)) #on tranforme y en un array de la bonne taille
+#X,y= make_circles(n_samples=100,noise=0.1,factor=0.3,random_state=0)#On génère les données 
+#y=y.reshape((y.shape[0],1)) #on tranforme y en un array de la bonne taille
 
 
 
@@ -52,20 +52,22 @@ def artificial_neuron(X,y,learning_rate=0.1,n_iter=100000): #on crée notre neur
     y_pred = predict(X,W,b)
     print(accuracy_score(y,y_pred))
     
-    #plt.plot(Loss) #on affiche l'évolution de Loss
-    #plt.show()
+    plt.plot(Loss) #on affiche l'évolution de Loss
+    plt.show()
     return(W,b)
 
 W,b = artificial_neuron(X,y) #On détermine W,b de notre modèle et à partir de nos données 
 
 
+new_plant=np.array([[2,2]])
 
 
-
-x0=np.linspace(-1,1.5,100)
+x0=np.linspace(-1,4,100)
 Y0=(-W[0]*x0 - b )/W[1]
 plt.plot(x0,Y0,c='b')
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap="summer")
+plt.scatter(new_plant[0][0],new_plant[0][1], c='r')
 
+print(predict(new_plant,W,b))
 
 plt.show()
